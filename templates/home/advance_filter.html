@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Search</title>
+</head>
+<body>
+<center>Search Functionality</center>
+<form method="POST">
+    {% csrf_token %}
+    <div class="table-responsive">
+        <h4><strong>Multiple Search</strong></h4>
+        <table class="table table-hover">
+            <thead class="">
+            <th>
+                ID
+            </th>
+            <th>
+                User Email
+            </th>
+            <th>
+                User IP
+            </th>
+            <th>
+                Question
+            </th>
+            <th>
+                Answer
+            </th>
+            <th>
+                Date Time
+            </th>
+            <th>
+                Event Status
+            </th>
+            <th>
+                Department
+            </th>
+            </thead>
+            <tbody>
+            {% if int_event_obj|length < 1 %}
+            <tr>
+                <td colspan=4>No Record Found</td>
+            </tr>
+            {% else %}
+            {% for count in int_event_obj %}
+            <tr>
+                <td>
+                    {{ forloop.counter}}
+                </td>
+                <td>
+                    {{ count.id}}
+                </td>
+                <td>
+                    {{ count.user_email}}
+                </td>
+                <td>
+                    {{ count.user_ip}}
+                </td>
+                <td>
+                    {{ count.event_question}}
+                </td>
+                <td>
+                    {{ count.event_answer}}
+                </td>
+                <td>
+                    {{ count.user_datetime}}
+                </td>
+                <td>
+                    {{ count.event_type_id_id}}
+                </td>
+                <td>
+                    {{ count.intent|upper}}
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</form>
+</body>
+</html>

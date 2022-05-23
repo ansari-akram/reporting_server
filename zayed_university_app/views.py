@@ -15,8 +15,9 @@ from difflib import SequenceMatcher
 import xml.etree.ElementTree as ET
 import requests
 from django.shortcuts import render
+import os
 
-tree = ET.parse('zayed_university_app\ZU_xml_v2.xml')
+tree = ET.parse(f'zayed_university_app{os.sep}ZU_xml_v2.xml')
 
 
 def similar(a, b):
